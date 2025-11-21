@@ -20,8 +20,8 @@ export function ReadFile({ filePath }: ReadFileProps) {
         }
         const text = await res.text();
         setContent(text);
-      } catch (err: any) {
-        setError(err.message ?? "Unknown error");
+      } catch (err) {
+        setError(err instanceof Error ? err.message : String(err));
       }
     }
 
